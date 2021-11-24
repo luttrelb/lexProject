@@ -25,13 +25,12 @@ extern int yylex();
 %type<fVal> FLOAT
 
 %%
-program:		statement_list
+program:		statement_list END END_STATEMENT
 	;
 statement_list:	statement
 		|	statement statement_list
 		;
-statement:	END END_STATEMENT {finish();}
-	|	POINT INT INT END_STATEMENT {point($2, $3);}
+statement:	POINT INT INT END_STATEMENT {point($2, $3);}
 	|	LINE INT INT INT INT END_STATEMENT {line($2, $3, $4, $5);}
 	|	CIRCLE INT INT INT END_STATEMENT {circle($2, $3, $4);}
 	|	RECTANGLE INT INT INT INT END_STATEMENT {rectangle($2, $3, $4, $5);}

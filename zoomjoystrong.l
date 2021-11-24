@@ -7,7 +7,7 @@
 [ \t\n\r]+   ;
 end {return END;}
 ; {return END_STATEMENT;}
-[0-9]+ {yylval.fVal = atof(yytext); return INT;}
+[0-9]+ {yylval.iVal = atoi(yytext); return INT;}
 [0-9]+\.[0-9]+ {yylval.fVal = atof(yytext); return FLOAT;}
 point {return POINT;}
 line {return LINE;}
